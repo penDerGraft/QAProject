@@ -1,4 +1,4 @@
-#A simple question and answer site
+#A simple question and answer application
 
 ##Collaborators 
 1. Jake Tansey
