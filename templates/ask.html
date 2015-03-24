@@ -1,14 +1,14 @@
 <div class="container">
 	<h1>Ask A Question</h1>
-	<div class="alert alert-danger" role="alert" ng-show="errorMsg"></div>
-	<form role='form' name="addQuestion" novalidate>
+	<div class="alert alert-danger" role="alert" ng-show="errorMsg">{{ errorMsg }}</div>
+	<form role='form' name="addQuestion">
 		<div class="form-group">
 			<label for="questionTitle">Question Title:</label>
-			<input ng-model='questionTitle' class='form-control' id="questionTitle" placeholder="Enter Question Title" required>
+			<input ng-model='questionTitle' class='form-control' id="questionTitle" placeholder="Enter Question Title">
 		</div>
 		<div class="form-group">
 			<label for="questionBody">Question:</label>
-			<textarea ng-model='questionBody' class='form-control' rows='6' id="questionBody" placeholder="Enter Question Here" required></textarea>
+			<textarea ng-model='questionBody' class='form-control' rows='6' id="questionBody" placeholder="Enter Question Here"></textarea>
 		</div>
 		<div class="form-group" >
       		<button ng-click='askQuestion()' type="submit" class='btn btn-default'>Ask Question</button>	

@@ -21,7 +21,6 @@ app.config(function ($routeProvider) {
 
 app.controller('QuestionsCtrl', function ($scope, QuestionsSvc, $location) {
   $scope.askQuestion = function () {
-    if ($scope.questionBody) {
       QuestionsSvc.create({
         username: 'someUser',
         title: 	  $scope.questionTitle,
@@ -32,12 +31,10 @@ app.controller('QuestionsCtrl', function ($scope, QuestionsSvc, $location) {
         $scope.questionBody = null
         $scope.questionTitle = null
         $location.path('/')
-
       })
       .error(function(error) {
 		$scope.errorMsg = 'All fields must be filled out'
 	 })
-    }
   }
 
   QuestionsSvc.fetch()
