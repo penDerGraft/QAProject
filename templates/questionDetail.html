@@ -1,9 +1,13 @@
 
-
-<h1>{{ question.title }}</h1>
-<h4> {{ question.body }}</h4>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1 class="panel-title">{{ question.title }}</h1>
+  </div>
+  <div class="panel-body">{{ question.body }}</div>
+  <span class="pull-right">Asked by {{ question.username }} on {{ question.date | date: 'short' }}</span>
+</div>
 <div ng-controller="AnswerCtrl">
-	<form>
+	<form>	
 		<div class="form-group">
 			<label for="answer">Answer:</label>
 			<textarea class='form-control' ng-model="answerBody" rows='6' id="answer" placeholder="Your Answer Here"></textarea>			
@@ -14,11 +18,15 @@
 	</form>
 	<h3>Recent Answers</h3>
 	<ul class="list-group">
-		<li ng-repeat="answer in answers | orderBy:'-date'" class='list-group-item'>
-			<span >{{ answer.votes }}</span>
-			<strong>@{{ answer.username }}:</strong>
-			<span>{{ answer.body }}</span>
-			<span class="pull-right">{{ answer.date | date:'short' }}</span>
-		</li>
+		<div ng-repeat="answer in answers | orderBy:'-date'" >	
+<!-- 			<div class="col-large-2">
+				<h2>{{ answer.votes }}</h2>
+			</div> -->
+			<div class='well well-lg col-large-10 col-large-offset-2'>
+				<span>{{ answer.body }}</span>
+				<span class="pull-right">Answered by {{ answer.username }} on {{ answer.date | date:'short' }}</span>				
+			</div>		
+			
+		</div>
 	</ul>
 </div>
