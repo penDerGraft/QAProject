@@ -11,14 +11,11 @@ router.get('/', function (req, res, next) {
 })
 
 router.post('/', function (req, res, next) {
-  var question = new Question({
-    username: req.body.username,
-    title:    req.body.title,
-    body:     req.body.body
-  })
-  question.save(function (err, question) {
+  var post = new Question({ title: req.body.title, body: req.body.body })
+  post.username = req.auth.username
+  post.save(function (err, post) {
     if (err) { return next(err) }
-    res.status(201).json(question)
+    res.status(201).json(post)
   })
 })
 
