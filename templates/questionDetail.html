@@ -1,0 +1,24 @@
+
+
+<h1>{{ question.title }}</h1>
+<h4> {{ question.body }}</h4>
+<div ng-controller="AnswerCtrl">
+	<form>
+		<div class="form-group">
+			<label for="answer">Answer:</label>
+			<textarea class='form-control' ng-model="answerBody" rows='6' id="answer" placeholder="Your Answer Here"></textarea>			
+		</div>
+		<div class="form-group" >
+			<button ng-click='postAnswer()' type="submit" class='btn btn-primary'>Post Answer</button>	
+		</div>
+	</form>
+	<h3>Recent Answers</h3>
+	<ul class="list-group">
+		<li ng-repeat="answer in answers | orderBy:'-date'" class='list-group-item'>
+			<span >{{ answer.votes }}</span>
+			<strong>@{{ answer.username }}:</strong>
+			<span>{{ answer.body }}</span>
+			<span class="pull-right">{{ answer.date | date:'short' }}</span>
+		</li>
+	</ul>
+</div>

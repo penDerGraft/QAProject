@@ -4,4 +4,5 @@ app.config(function ($routeProvider) {
 	.when('/login', { controller: 'LoginCtrl', templateUrl: 'login.html' })
 	.when('/ask', { controller: 'QuestionsCtrl', templateUrl: 'ask.html' })
 	.when('/register', { controller: 'RegisterCtrl', templateUrl: 'register.html' })
+	.when('/:id', { controller: 'QuestionDetailCtrl', templateUrl: 'questionDetail.html' })
 })

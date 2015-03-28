@@ -5,7 +5,6 @@ angular.module('app')
 		.then(function (user){
 			$scope.$emit('login', user)
 			$location.path('/')
-
 		},
 		function(error) {
 			$scope.errorMsg = 'Incorrect username/password'

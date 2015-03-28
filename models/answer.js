@@ -1,13 +1,12 @@
 
 var db = require('../db')
-var Answer = require('./answer')
 
-var Question = db.model('Question', {
+var Answer = db.model('Answer', {
 	username: { type: String, required: true },
-	title: { type: String, required: true },
 	body: { type: String, required: true },
 	date: { type: Date, required: true, default: Date.now },
-	answers: [ Answer.schema ]
+	votes: Number
 })
 
-module.exports = Question
+module.exports = Answer
+
