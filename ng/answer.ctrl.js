@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('AnswerCtrl', function ($scope, AnswersSvc, QuestionsSvc, $location) {
+.controller('AnswerCtrl', function ($scope, AnswersSvc, QuestionsSvc, $location, toastr) {
 	$scope.editBody = ''
 
 	$scope.postAnswer = function (answerBody) {
@@ -50,22 +50,27 @@ angular.module('app')
 	}
 
 	$scope.vote = function (id, vote) {
-		$scope.answers.forEach(function (item) {
-			if(item._id === id) {
-				item.votes = vote
-				// console.log(editBody)
+		if ($scope.currentUser) {
+
+			$scope.answers.forEach(function (item) {
+				if(item._id === id) {
+					item.votes = vote
+					// console.log(editBody)
+				}
+			})
+
+			var question = {
+				_id: $scope.question._id,
+				answers: $scope.answers
 			}
-		})
 
-		var question = {
-			_id: $scope.question._id,
-			answers: $scope.answers
+			QuestionsSvc.update($location.path(), question)
+			.success(function (question) {
+				$scope.message = "Answer Updated!"
+			})
+		} else {
+			toastr.warning('You must log in to vote', 'Warning')
 		}
-
-		QuestionsSvc.update($location.path(), question)
-		.success(function (question) {
-			$scope.message = "Answer Updated!"
-		})
 
 	}
 

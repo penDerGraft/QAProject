@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('ApplicationCtrl', function ($scope, UserSvc, $window) {
+.controller('ApplicationCtrl', function ($scope, UserSvc, $window, toastr) {
 	if ($window.sessionStorage.token) { 
 		UserSvc.checkUser()
 		.then(function (user) {
@@ -10,7 +10,7 @@ angular.module('app')
 	$scope.logout = function () {
 		UserSvc.logout()
 		$scope.currentUser = false
-		$scope.logoutMessage = "You have been logged out"
+		toastr.info('You have been logged out', 'Information')
 	}
 	
 	$scope.$on('login', function (_, user) {

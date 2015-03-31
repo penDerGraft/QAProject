@@ -23,8 +23,8 @@
 			<div class="votes-div col-lg-12">
 				<div>
 					<div class="vote roundrect">
-						  <div class="increment up" ng-click="currentUser && vote(answer._id, answer.votes + 1)"></div>
-						  <div class="increment down" ng-click="currentUser && vote(answer._id, answer.votes - 1)"></div>	  
+						  <div class="increment up" ng-click="vote(answer._id, answer.votes + 1)"></div>
+						  <div class="increment down" ng-click="vote(answer._id, answer.votes - 1)"></div>	  
 						  <div class="count">{{ answer.votes }}</div>
 					</div>
 				</div>
