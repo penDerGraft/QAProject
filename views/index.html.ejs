@@ -8,19 +8,35 @@
 	<body ng-app='app' ng-controller='ApplicationCtrl'>
 		<nav class='navbar navbar-default'>
 			<div class='container'>
-				<ul class="nav navbar-nav">
-					<li><a href="/#/register">Register</a></li>
-					<li><a href="/#/ask">Ask</a></li>
-					<li><a href="/#/login">Login</a></li>					
-				</ul>
-				<p ng-if='currentUser' class="navbar-text navbar-right">
-					Signed in as {{ currentUser.username }}
-				</p>	
+				<div ng-if="!currentUser">
+					<ul class="nav navbar-nav">
+						<li><a href="/#/register">Register</a></li>
+						<li><a href="/#/">Recent Questions</a></li>
+						<li><a href="/#/login">Login</a></li>					
+					</ul>
+				</div>
+				<div ng-if="currentUser">
+					<ul class="nav navbar-nav">
+						<li><a href="/#/ask">Ask</a></li>
+						<li><a href="/#/">Recent Questions</a></li>
+						<li><a ng-click="logout()" href="/#/">Logout</a></li>					
+					</ul>
+					<p class="navbar-text navbar-right">
+						Signed in as {{ currentUser.username }}
+					</p>
+				</div>	
 			</div>
-		</nav>
-		<div class="container" ng-view></div>		
+		</nav>		
+		<div class="container" ng-view>
+			<div ng-show="logoutMessage" class="alert alert-info alert-dismissible" role="alert">
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				{{ logoutMessage }}		 
+			</div>
+		</div>		
 		<script src =' https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js'></script>
 		<script src =' https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src='/app.js'></script>
 	</body>
 </html>

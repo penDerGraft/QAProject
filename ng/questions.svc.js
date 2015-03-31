@@ -9,4 +9,7 @@ angular.module('app')
   this.fetchOne = function (id) {
   	return $http.get('/api/questions/' + id)
   }
+  this.update = function(id, question) {
+  	return $http.put('/api/questions/' + id, question)
+  }
 })

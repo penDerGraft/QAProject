@@ -8,4 +8,8 @@ angular.module('app')
   		return $http.get('/api/questions' + id)
   	}
 
+  	this.deleteAnswer = function(questID, ansID) {
+  		return $http.delete('api/questions/' + questID + '/' + ansID)
+  	}
+
 })
